@@ -25,52 +25,45 @@ Generate structured accident reports (JSON)
 - JSON accident report generation
 
 
-🧠 AI Models
-Vehicle Detection Model
+## 🧠 AI Models
 
-Detects vehicles in the video.
+- Vehicle Detection Model
 
-Model:
-
-vehicle-model.pt
+Model: vehicle-model.pt
 
 Detects:
 
-Cars
+    - Cars
 
-Trucks
+    - Trucks
 
-Buses
+    - Buses
 
-Motorcycles
+    - Motorcycles
 
-Crash Detection Model
+- Crash Detection Model
 
-Detects accidents.
-
-Model:
-
-crash-model.pt
+Model: crash-model.pt
 
 Classes:
 
 ['0', '1', '2']
 
-Only "crash" class is considered a valid accident.
+Only "2" class is considered a valid accident.
 
 ⚙️ Technologies Used
 
-Python
+- Python
 
-OpenCV
+- OpenCV
 
-YOLOv8 (Ultralytics)
+- YOLOv8 (Ultralytics)
 
-NumPy
+- NumPy
 
-JSON
+- JSON
 
-VSCode
+- VSCode
 
 ## 📁 Project Structure
 ```
@@ -122,13 +115,16 @@ accident_log.json
 
 Example:
 
-[
+```
   {
     "timestamp": "2026-02-25 18:42:33",
     "snapshot": "snapshots/accident_20260225_184233.jpg",
     "confidence": 0.91
   }
-]
+```
+
+
+
 🧪 Detection Logic
 
 An accident is confirmed when:
@@ -149,7 +145,7 @@ This reduces false detections.
 
 
 
-Sprint 1 includes:
+Sprint 1 :
 
 ✔ Vehicle detection
 
