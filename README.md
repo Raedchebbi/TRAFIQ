@@ -72,16 +72,18 @@ JSON
 
 VSCode
 
-📁 Project Structure
+## 📁 Project Structure
+```
 backend/
- └── ai-engine/
-      detect_video.py
-      └── dateset/
-      └──models/
-         best_vehicle.pt
-         best_crash.pt
-      accident_log.json
-      snapshots.jpg
+└── ai-engine/
+    ├── detect_video.py
+    ├── accident_log.json
+    ├── snapshots/
+    ├── dataset/
+    └── models/
+        ├── best_vehicle.pt
+        └── best_crash.pt
+```
 
 
 ▶️ How to Run
