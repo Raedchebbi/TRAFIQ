@@ -78,7 +78,6 @@ backend/
 └── ai-engine/
     ├── detect_video.py
     ├── accident_log.json
-    ├── snapshots/
     ├── dataset/
     └── models/
         ├── best_vehicle.pt
