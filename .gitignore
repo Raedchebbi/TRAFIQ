@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+*.h5
+*.pkl
+*.pt
+*.pth
+models/
+backend/ai-engine/dataset/
+backend/ai-engine/runs/
+.vscode/
+.idea/
