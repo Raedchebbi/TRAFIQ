@@ -16,13 +16,13 @@ Generate structured accident reports (JSON)
 
 
 
-🎯 Features
+## ✅ Features
 
-✅ Vehicle detection using YOLO
-✅ Collision detection using bounding-box overlap (IoU)
-✅ Accident classification with trained crash model
-✅ Automatic accident snapshot capture
-✅ JSON accident report generation
+- Vehicle detection using YOLO
+- Collision detection using bounding-box overlap (IoU)
+- Accident classification with trained crash model
+- Automatic accident snapshot capture
+- JSON accident report generation
 
 
 🧠 AI Models
@@ -77,8 +77,7 @@ VSCode
 backend/
 └── ai-engine/
     ├── detect_video.py
-    ├── accident_log.json
-    ├── dataset/
+    ├── incidents_log.json
     └── models/
         ├── best_vehicle.pt
         └── best_crash.pt
@@ -86,8 +85,10 @@ backend/
 
 
 ▶️ How to Run
+
 1️⃣ Install Dependencies
 pip install ultralytics opencv-python numpy
+
 2️⃣ Run Detection (backend/ai-engine/)
 python detect_video.py
 🎥 Input Video
