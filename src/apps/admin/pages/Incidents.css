@@ -1,0 +1,102 @@
+.adm-incidents-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.adm-incidents-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.adm-incidents-title h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.adm-incidents-summary {
+    display: flex;
+    gap: 10px;
+}
+
+.adm-badge-red {
+    background: #FFEBEE;
+    color: #D32F2F;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.adm-badge-gray {
+    background: #ECEFF1;
+    color: #455A64;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.adm-incidents-filters {
+    display: flex;
+    gap: 12px;
+}
+
+.adm-input-search {
+    padding: 10px 16px;
+    border: 1px solid #CFD8DC;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    width: 240px;
+}
+
+.adm-select-filter {
+    padding: 10px 12px;
+    border: 1px solid #CFD8DC;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    background: #fff;
+}
+
+.adm-btn-primary {
+    background: var(--adm-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.adm-btn-primary:hover {
+    background: #0052CC;
+}
+
+.adm-incidents-list h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #546E7A;
+    margin-bottom: 16px;
+}
+
+.adm-incidents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.adm-incidents-grid.archived {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+}
+
+.adm-mt-32 {
+    margin-top: 32px !important;
+}

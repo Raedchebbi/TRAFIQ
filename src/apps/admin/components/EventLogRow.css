@@ -1,0 +1,76 @@
+.adm-event-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #F0F4F8;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    transition: background 0.2s;
+}
+
+.adm-event-row:hover {
+    background: #FAFAFA;
+}
+
+.adm-event-time {
+    color: #78909C;
+    min-width: 60px;
+}
+
+.adm-event-tag {
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    min-width: 70px;
+    text-align: center;
+}
+
+.confirm .adm-event-tag {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.correction .adm-event-tag {
+    background: #FFF3E0;
+    color: #F57C00;
+}
+
+.candidat .adm-event-tag {
+    background: #E3F2FD;
+    color: #0288D1;
+}
+
+.adm-event-details {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.adm-event-pair {
+    font-weight: 600;
+    color: var(--adm-text-primary);
+}
+
+.adm-event-level {
+    color: #546E7A;
+}
+
+.adm-event-reason {
+    font-style: italic;
+    color: #90A4AE;
+}
+
+.adm-event-metrics {
+    display: flex;
+    gap: 10px;
+}
+
+.adm-metric-item {
+    background: #ECEFF1;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #455A64;
+}

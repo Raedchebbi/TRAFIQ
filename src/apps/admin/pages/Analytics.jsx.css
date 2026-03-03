@@ -1,0 +1,88 @@
+.adm-analytics-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.adm-analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adm-analytics-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.adm-analytics-range {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #78909C;
+}
+
+.adm-analytics-top-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.adm-kpi-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--adm-shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.adm-kpi-card span {
+    font-size: 0.75rem;
+    color: #78909C;
+    font-weight: 600;
+}
+
+.adm-kpi-card strong {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--adm-text-primary);
+}
+
+.adm-analytics-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.adm-chart-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--adm-shadow-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.adm-chart-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--adm-text-primary);
+}
+
+.adm-chart-h {
+    height: 300px;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .adm-analytics-top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .adm-analytics-main-grid {
+        grid-template-columns: 1fr;
+    }
+}

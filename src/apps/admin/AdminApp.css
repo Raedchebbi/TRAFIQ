@@ -1,0 +1,21 @@
+.admin-app {
+    display: flex;
+    height: 100vh;
+    background: var(--adm-bg);
+    font-family: var(--font-body);
+    color: var(--adm-text-primary);
+}
+
+.admin-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.admin-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}

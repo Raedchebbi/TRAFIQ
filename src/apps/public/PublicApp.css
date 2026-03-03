@@ -1,0 +1,195 @@
+/* ============================================================
+   TRAFIQ — Public App Styles
+   ============================================================ */
+
+.pub-app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    height: 100vh;
+    background: var(--pub-bg);
+    font-family: var(--font-body);
+    color: var(--pub-text-primary);
+}
+
+/* ── Top Bar ─────────────────────────────────────────────── */
+.pub-topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.pub-logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.pub-logo-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--pub-accent);
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.pub-logo-tag {
+    font-size: 0.62rem;
+    color: var(--pub-text-secondary);
+    white-space: nowrap;
+}
+
+.pub-topbar-search {
+    flex: 1;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.pub-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 14px;
+    background: var(--pub-bg-sheet);
+    border: 1px solid var(--pub-border);
+    border-radius: var(--pub-radius-pill);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--pub-text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.pub-search-btn:hover {
+    border-color: var(--pub-accent);
+    background: #EEF4FF;
+}
+
+.pub-search-icon {
+    font-size: 0.9rem;
+}
+
+.pub-search-placeholder {
+    flex: 1;
+    text-align: center;
+}
+
+.pub-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.pub-icon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: var(--pub-bg-sheet);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--pub-text-primary);
+    transition: background 0.2s;
+}
+
+.pub-icon-btn:hover {
+    background: #E3EEFF;
+    color: var(--pub-accent);
+}
+
+.pub-notif-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: var(--color-accident);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.pub-admin-link {
+    font-size: 0.72rem;
+    color: #B0BEC5;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+}
+
+.pub-admin-link:hover {
+    color: var(--pub-text-secondary);
+}
+
+/* ── Main ────────────────────────────────────────────────── */
+.pub-main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Bottom Nav (mobile) ─────────────────────────────────── */
+.pub-bottom-nav {
+    display: none;
+    background: #fff;
+    border-top: 1px solid var(--pub-border);
+    flex-shrink: 0;
+}
+
+.pub-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    padding: 8px 0;
+    text-decoration: none;
+    color: var(--pub-text-secondary);
+    font-size: 0.7rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.pub-nav-item.pub-nav-active {
+    color: var(--pub-accent);
+}
+
+.pub-nav-item:hover {
+    color: var(--pub-accent);
+}
+
+@media (max-width: 768px) {
+    .pub-topbar-search {
+        display: none;
+    }
+
+    .pub-bottom-nav {
+        display: flex;
+    }
+
+    .pub-topbar {
+        padding: 0 12px;
+    }
+}

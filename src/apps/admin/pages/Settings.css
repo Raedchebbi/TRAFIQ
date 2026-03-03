@@ -1,0 +1,142 @@
+.adm-settings-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.adm-settings-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.adm-settings-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+}
+
+.adm-settings-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.adm-set-nav {
+    text-align: left;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #546E7A;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.adm-set-nav:hover {
+    background: #ECEFF1;
+}
+
+.adm-set-nav.active {
+    background: #fff;
+    color: var(--adm-accent);
+    box-shadow: var(--adm-shadow-card);
+}
+
+.adm-settings-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.adm-set-section h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--adm-text-primary);
+    margin-bottom: 8px;
+}
+
+.adm-set-section p {
+    font-size: 0.85rem;
+    color: #546E7A;
+    margin-bottom: 16px;
+}
+
+.adm-set-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.adm-set-row.jc-sb {
+    justify-content: space-between;
+}
+
+.adm-input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.adm-input-small {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #CFD8DC;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.adm-toggle {
+    width: 44px;
+    height: 24px;
+    background: #CFD8DC;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.adm-toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.adm-toggle.active {
+    background: var(--color-safe);
+}
+
+.adm-toggle.active::after {
+    left: 22px;
+}
+
+.adm-set-log {
+    background: #F8FAFC;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #455A64;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fs-08 {
+    font-size: 0.85rem;
+}
+
+.c-gray {
+    color: #546E7A;
+}

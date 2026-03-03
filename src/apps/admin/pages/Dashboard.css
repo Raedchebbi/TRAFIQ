@@ -1,0 +1,118 @@
+.adm-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.adm-dash-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.adm-dash-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    height: 520px;
+}
+
+.adm-dash-map-wrap,
+.adm-dash-feed {
+    background: #fff;
+    border-radius: var(--adm-radius-card);
+    box-shadow: var(--adm-shadow-card);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.adm-dash-map-content {
+    flex: 1;
+    position: relative;
+}
+
+.adm-dash-feed-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 16px;
+}
+
+.adm-card-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F0F4F8;
+}
+
+.adm-card-header h3 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--adm-text-primary);
+}
+
+.adm-live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accident);
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulse 1.5s infinite;
+}
+
+.adm-badge-blue {
+    background: #E3F2FD;
+    color: #0288D1;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.adm-dash-incidents {
+    background: #fff;
+    border-radius: var(--adm-radius-card);
+    box-shadow: var(--adm-shadow-card);
+    padding: 20px;
+}
+
+.adm-dash-incidents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.adm-btn-text {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--adm-accent);
+    cursor: pointer;
+}
+
+@media (max-width: 1400px) {
+    .adm-dash-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .adm-dash-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .adm-dash-map-wrap {
+        height: 500px;
+    }
+
+    .adm-dash-feed {
+        height: 400px;
+    }
+}

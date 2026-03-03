@@ -1,0 +1,103 @@
+.adm-topbar {
+    height: 60px;
+    background: #fff;
+    border-bottom: 1px solid #E0E4E8;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    z-index: 50;
+}
+
+.adm-tb-left {
+    flex: 1;
+}
+
+.adm-tb-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--adm-text-primary);
+}
+
+.adm-tb-center {
+    background: #F0F4F8;
+    padding: 6px 16px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+}
+
+.adm-tb-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #455A64;
+}
+
+.adm-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.adm-status-dot.green {
+    background: #4CAF50;
+}
+
+.adm-tb-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.adm-tb-notif {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    color: #455A64;
+}
+
+.adm-notif-dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accident);
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.adm-tb-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adm-tb-user-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--adm-text-primary);
+}
+
+.adm-tb-avatar {
+    width: 28px;
+    height: 28px;
+    background: #ECEFF1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #455A64;
+}

@@ -1,0 +1,82 @@
+.adm-stat-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--adm-radius-card);
+    box-shadow: var(--adm-shadow-card);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.adm-stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.adm-stat-card.urgent {
+    background: #FFF5F5;
+    border-left: 4px solid var(--color-accident);
+}
+
+.adm-stat-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #607D8B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.adm-stat-value-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.adm-stat-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: var(--adm-text-primary);
+}
+
+.adm-stat-trend {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #90A4AE;
+}
+
+.adm-stat-trend.positive {
+    color: var(--color-safe);
+}
+
+.adm-stat-gauge {
+    width: 32px;
+    height: 32px;
+}
+
+.adm-circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #ECEFF1;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke: var(--adm-accent);
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.urgent .adm-stat-value {
+    color: var(--color-accident);
+    text-shadow: 0 0 10px rgba(229, 57, 53, 0.2);
+}

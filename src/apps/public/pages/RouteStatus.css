@@ -1,0 +1,133 @@
+.routes-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--pub-bg-sheet);
+    font-family: var(--font-body);
+}
+
+.routes-header {
+    padding: 20px 20px 0;
+}
+
+.routes-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--pub-text-primary);
+}
+
+.routes-update {
+    font-size: 0.75rem;
+    color: var(--pub-text-secondary);
+    margin-top: 4px;
+}
+
+.routes-global {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 14px 20px;
+    padding: 14px 16px;
+    background: #fff;
+    border-left: 4px solid var(--color-slow);
+    border-radius: 12px;
+    box-shadow: var(--pub-shadow);
+}
+
+.routes-global-icon {
+    font-size: 1.4rem;
+}
+
+.routes-global-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.routes-global-sub {
+    font-size: 0.78rem;
+    color: var(--pub-text-secondary);
+    margin-top: 2px;
+}
+
+.routes-content {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.routes-section {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--pub-shadow);
+}
+
+.routes-section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pub-text-secondary);
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid var(--pub-border);
+}
+
+.routes-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--pub-border);
+    flex-wrap: wrap;
+}
+
+.routes-row:last-child {
+    border-bottom: none;
+}
+
+.routes-row-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.routes-row-name {
+    flex: 1;
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: var(--pub-text-primary);
+    min-width: 120px;
+}
+
+.routes-row-status {
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.routes-row-meta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+}
+
+.routes-alt-btn {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #EEF4FF;
+    color: var(--pub-accent);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.routes-alt-btn:hover {
+    background: #DCE9FF;
+}

@@ -1,0 +1,112 @@
+.adm-live-monitoring {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.adm-live-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adm-live-info h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.adm-live-info p {
+    font-size: 0.85rem;
+    color: #546E7A;
+}
+
+.adm-live-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.adm-live-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    min-height: 0;
+}
+
+.adm-cam-cell {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.adm-cam-cell.incident {
+    border-color: var(--color-accident);
+    animation: blink-border 1s infinite;
+}
+
+@keyframes blink-border {
+
+    0%,
+    100% {
+        border-color: var(--color-accident);
+        box-shadow: 0 0 10px var(--color-accident);
+    }
+
+    50% {
+        border-color: rgba(229, 57, 53, 0.3);
+        box-shadow: none;
+    }
+}
+
+.adm-cam-canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.adm-cam-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.adm-cam-tag {
+    background: rgba(15, 28, 46, 0.8);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.adm-cam-loc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.adm-btn-secondary {
+    background: #fff;
+    border: 1px solid #CFD8DC;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.adm-btn-secondary:hover {
+    background: #F5F7FA;
+    border-color: #B0BEC5;
+}

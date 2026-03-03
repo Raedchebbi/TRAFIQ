@@ -1,0 +1,223 @@
+.adm-ai-agent-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.adm-ai-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.adm-ai-header p {
+    font-size: 0.85rem;
+    color: #546E7A;
+}
+
+.adm-ai-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr 320px;
+    gap: 20px;
+    align-items: start;
+}
+
+.adm-ai-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--adm-shadow-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.adm-ai-card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--adm-text-primary);
+    border-bottom: 1px solid #F0F4F8;
+    padding-bottom: 12px;
+}
+
+/* Pipeline */
+.adm-pipeline-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adm-step-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    background: #F8FAFC;
+    border-radius: 8px;
+    position: relative;
+}
+
+.adm-step-icon {
+    font-size: 1rem;
+}
+
+.adm-step-name {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #78909C;
+}
+
+.adm-step-val {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--adm-text-primary);
+}
+
+.adm-step-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(0, 102, 255, 0.2);
+    border-top-color: var(--adm-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: auto;
+}
+
+/* Logs */
+.adm-ai-logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 600px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+}
+
+.adm-ai-log-entry {
+    padding: 8px 12px;
+    border-bottom: 1px solid #F8FAFC;
+}
+
+.adm-log-time {
+    color: #90A4AE;
+    margin-bottom: 2px;
+}
+
+.adm-log-tag {
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.adm-ai-log-entry.confirm .adm-log-tag {
+    color: #2E7D32;
+}
+
+.adm-ai-log-entry.correction .adm-log-tag {
+    color: #F57C00;
+}
+
+.adm-ai-log-entry.candidat .adm-log-tag {
+    color: #0288D1;
+}
+
+.adm-log-pair {
+    color: var(--adm-text-primary);
+    font-weight: 600;
+}
+
+.adm-log-meta {
+    color: #78909C;
+    margin-top: 2px;
+}
+
+/* Metrics */
+.adm-ai-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.adm-metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.adm-ai-dist {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adm-dist-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #78909C;
+    text-transform: uppercase;
+}
+
+.adm-dist-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+}
+
+.adm-dist-lvl {
+    min-width: 30px;
+}
+
+.adm-dist-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: #F0F4F8;
+    border-radius: 3px;
+}
+
+.adm-dist-bar {
+    height: 100%;
+    background: var(--adm-accent);
+    border-radius: 3px;
+}
+
+.adm-dist-val {
+    min-width: 30px;
+    text-align: right;
+}
+
+.adm-ai-conf {
+    margin-top: 16px;
+}
+
+.adm-conf-big-bar {
+    height: 24px;
+    background: #F0F4F8;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.adm-conf-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00C853, #00E676);
+    transition: width 0.5s ease;
+}
+
+.adm-conf-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--adm-text-primary);
+}
+
+@media (max-width: 1200px) {
+    .adm-ai-grid {
+        grid-template-columns: 1fr;
+    }
+}

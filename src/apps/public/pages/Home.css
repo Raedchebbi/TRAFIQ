@@ -1,0 +1,112 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.home-map-wrap {
+    flex: 1;
+    min-height: 0;
+}
+
+/* Retractable panel */
+.home-panel {
+    background: #fff;
+    border-top: 1px solid var(--pub-border);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.10);
+    padding: 0 16px 16px;
+    max-height: 48px;
+    transition: max-height 0.35s ease;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.home-panel.home-panel-open {
+    max-height: 280px;
+}
+
+.home-panel-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.home-panel-bar {
+    width: 40px;
+    height: 4px;
+    background: #DDE3EA;
+    border-radius: 2px;
+}
+
+.home-panel-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--pub-text-primary);
+    margin-bottom: 10px;
+}
+
+.home-panel-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.home-route-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--pub-bg-sheet);
+    border-radius: 10px;
+    font-size: 0.85rem;
+}
+
+.home-route-icon {
+    font-size: 1rem;
+}
+
+.home-route-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--pub-text-primary);
+}
+
+.home-route-status {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.home-route-time {
+    font-weight: 600;
+    color: var(--pub-text-secondary);
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+}
+
+.home-plan-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: var(--pub-accent);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.home-plan-btn:hover {
+    background: var(--pub-accent-dark);
+}
