@@ -100,3 +100,197 @@
 .adm-mt-32 {
     margin-top: 32px !important;
 }
+/* ── Stats Bar ── */
+.ci-stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.ci-stats-box {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ci-stats-box.active  { border-color: rgba(255,82,82,0.3);  background: rgba(255,82,82,0.06); }
+.ci-stats-box.resolved{ border-color: rgba(0,200,83,0.3);   background: rgba(0,200,83,0.06);  }
+.ci-stats-box.severe  { border-color: rgba(213,0,0,0.3);    background: rgba(213,0,0,0.08);   }
+
+.ci-stats-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #e8edf2;
+    line-height: 1;
+}
+
+.ci-stats-key {
+    font-size: 0.65rem;
+    color: #667788;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Section Header ── */
+.ci-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.ci-section-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #c8d8e8;
+    margin: 0;
+}
+
+/* ── Congestion Row ── */
+.ci-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.ci-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    transition: background 0.2s;
+}
+
+.ci-row:hover { background: rgba(255,255,255,0.06); }
+.ci-row.resolved { opacity: 0.6; }
+.ci-row.active { border-left: 3px solid #ff6d00; }
+
+.ci-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 220px;
+}
+
+.ci-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ci-row-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ci-row-id {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #8899aa;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.ci-row-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* ── Row Stats ── */
+.ci-row-stats {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+.ci-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ci-stat-val {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #e8edf2;
+}
+
+.ci-stat-key {
+    font-size: 0.6rem;
+    color: #556677;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ── Row Right ── */
+.ci-row-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    min-width: 180px;
+}
+
+.ci-timestamp {
+    font-size: 0.7rem;
+    color: #667788;
+    font-family: monospace;
+}
+
+.ci-badge-resolved {
+    font-size: 0.65rem;
+    color: #00c853;
+    background: rgba(0,200,83,0.1);
+    border: 1px solid rgba(0,200,83,0.3);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-weight: 600;
+}
+
+.ci-resolve-btn {
+    font-size: 0.72rem;
+    padding: 5px 14px;
+}
+
+/* ── API Badge ── */
+.ci-api-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.ci-api-badge.ok  { color: #00c853; background: rgba(0,200,83,0.1);  border: 1px solid rgba(0,200,83,0.3); }
+.ci-api-badge.err { color: #ff5252; background: rgba(255,82,82,0.1); border: 1px solid rgba(255,82,82,0.3); }
+
+/* ── Empty / No API states ── */
+.ci-no-api, .ci-empty {
+    text-align: center;
+    padding: 40px;
+    color: #445566;
+    background: rgba(255,255,255,0.02);
+    border-radius: 10px;
+    border: 1px dashed rgba(255,255,255,0.08);
+    margin-bottom: 16px;
+}
+
+.ci-no-api p { margin: 0 0 10px; font-size: 0.9rem; }
+.ci-no-api code {
+    background: rgba(255,255,255,0.05);
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: #00c853;
+    font-size: 0.85rem;
+}
+
+.adm-mt-32 { margin-top: 32px; }
