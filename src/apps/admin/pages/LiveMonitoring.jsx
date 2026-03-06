@@ -1,86 +1,199 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './LiveMonitoring.css';
 
+const API_BASE = 'http://localhost:5000';
+
+const LEVEL_CONFIG = {
+    0: { label: 'TRAFFIC FREE',     color: '#00c853', bg: 'rgba(0,200,83,0.12)'   },
+    1: { label: 'MODERATE TRAFFIC', color: '#ffab00', bg: 'rgba(255,171,0,0.12)'  },
+    2: { label: 'HEAVY CONGESTION', color: '#ff6d00', bg: 'rgba(255,109,0,0.12)'  },
+    3: { label: 'SEVERE CONGESTION',color: '#d50000', bg: 'rgba(213,0,0,0.15)'    },
+};
+
 export default function LiveMonitoring() {
-    const canvasRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+    const [status, setStatus] = useState(null);
+    const [connected, setConnected] = useState(false);
+    const [alertFlash, setAlertFlash] = useState(false);
+    const alertInterval = useRef(null);
 
+    // Poll /api/status every second
     useEffect(() => {
-        canvasRefs.forEach((ref, idx) => {
-            const canvas = ref.current;
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let frame = 0;
-
-            const draw = () => {
-                frame++;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                // Mock Camera View
-                ctx.fillStyle = '#E8EDF2';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                // Grid
-                ctx.strokeStyle = 'rgba(0,0,0,0.05)';
-                ctx.beginPath();
-                for (let i = 0; i < canvas.width; i += 40) { ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); }
-                for (let i = 0; i < canvas.height; i += 40) { ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); }
-                ctx.stroke();
-
-                // Moving vehicles mock
-                const vPos = (frame * (1 + idx * 0.5)) % canvas.width;
-                ctx.fillStyle = idx === 1 ? 'rgba(229, 57, 53, 0.4)' : 'rgba(0, 102, 255, 0.3)'; // Highlight cam 2 as "incident zone"
-                ctx.fillRect(vPos, 100, 40, 20);
-                ctx.strokeStyle = idx === 1 ? '#E53935' : '#0066FF';
-                ctx.strokeRect(vPos, 100, 40, 20);
-
-                ctx.fillStyle = idx === 1 ? '#B71C1C' : '#1A2340';
-                ctx.font = '10px IBM Plex Mono';
-                ctx.fillText(`#${100 + idx} ${vPos.toFixed(0)}px/s`, vPos, 95);
-
-                // UI Overlay
-                ctx.fillStyle = 'rgba(15, 28, 46, 0.7)';
-                ctx.fillRect(10, 10, 120, 22);
-                ctx.fillStyle = '#fff';
-                ctx.fillText(`CAM-0${idx + 1} | 24.3 FPS`, 18, 25);
-
-                if (idx === 1 && frame % 60 < 30) {
-                    ctx.fillStyle = 'rgba(229, 57, 53, 0.8)';
-                    ctx.fillRect(canvas.width - 90, 10, 80, 22);
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(`🚨 ACCIDENT`, canvas.width - 82, 25);
-                }
-
-                requestAnimationFrame(draw);
-            };
-
-            const animId = requestAnimationFrame(draw);
-            return () => cancelAnimationFrame(animId);
-        });
+        const poll = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/status`);
+                const data = await res.json();
+                setStatus(data);
+                setConnected(true);
+            } catch {
+                setConnected(false);
+            }
+        };
+        poll();
+        const interval = setInterval(poll, 1000);
+        return () => clearInterval(interval);
     }, []);
+
+    // Alert flash effect
+    useEffect(() => {
+        if (status?.alert_active) {
+            alertInterval.current = setInterval(() => setAlertFlash(f => !f), 600);
+        } else {
+            clearInterval(alertInterval.current);
+            setAlertFlash(false);
+        }
+        return () => clearInterval(alertInterval.current);
+    }, [status?.alert_active]);
+
+    const level = status?.congestion_level ?? 0;
+    const cfg = LEVEL_CONFIG[level];
 
     return (
         <div className="adm-live-monitoring">
+
+            {/* ── Header ── */}
             <div className="adm-live-header">
                 <div className="adm-live-info">
-                    <h2>Grille de Caméras Haute-Définition</h2>
-                    <p>Analyse IA multi-flux en temps réel · 4 sources actives</p>
+                    <h2>Surveillance Live · Détection IA</h2>
+                    <p>
+                        {connected
+                            ? `Flux actif · ${status?.stream_title || 'YouTube Live'}`
+                            : 'Connexion au backend...'}
+                    </p>
                 </div>
                 <div className="adm-live-controls">
-                    <button className="adm-btn-secondary">Grille 2x2</button>
-                    <button className="adm-btn-secondary">Plein écran</button>
+                    <span className={`lm-conn-badge ${connected ? 'ok' : 'err'}`}>
+                        {connected ? '● CONNECTÉ' : '○ DÉCONNECTÉ'}
+                    </span>
+                    <span className="lm-fps-badge">
+                        {status?.fps ?? '--'} FPS
+                    </span>
                 </div>
             </div>
 
-            <div className="adm-live-grid">
-                {canvasRefs.map((ref, idx) => (
-                    <div key={idx} className={`adm-cam-cell ${idx === 1 ? 'incident' : ''}`}>
-                        <canvas ref={ref} width={640} height={360} className="adm-cam-canvas" />
-                        <div className="adm-cam-overlay">
-                            <span className="adm-cam-tag">#TUN-CAM-{idx + 1}</span>
-                            <span className="adm-cam-loc">Zone {String.fromCharCode(65 + idx)}</span>
+            {/* ── Congestion Alert Banner ── */}
+            {status?.alert_active && (
+                <div className={`lm-alert-banner ${alertFlash ? 'flash' : ''}`}>
+                    🚨 ALERTE CONGESTION — {status.congestion_label}
+                </div>
+            )}
+
+            {/* ── Main Grid ── */}
+            <div className="lm-main-grid">
+
+                {/* Live Video Stream */}
+                <div className="lm-stream-wrap">
+                    <div className="lm-stream-header">
+                        <span className="adm-live-dot" /> LIVE · Caméra principale
+                    </div>
+                    <img
+                        src={`${API_BASE}/api/stream`}
+                        alt="Live stream"
+                        className="lm-stream-img"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                    {!connected && (
+                        <div className="lm-stream-placeholder">
+                            <p>⏳ En attente du backend Python...</p>
+                            <code>python api.py</code>
+                        </div>
+                    )}
+                </div>
+
+                {/* Stats Panel */}
+                <div className="lm-stats-panel">
+
+                    {/* Congestion Level Card */}
+                    <div className="lm-card lm-congestion-card"
+                         style={{ background: cfg.bg, borderColor: cfg.color }}>
+                        <p className="lm-card-label">Niveau de congestion</p>
+                        <p className="lm-congestion-label" style={{ color: cfg.color }}>
+                            {cfg.label}
+                        </p>
+                        {/* Level bar */}
+                        <div className="lm-level-bar">
+                            {[0, 1, 2, 3].map(i => (
+                                <div
+                                    key={i}
+                                    className="lm-level-seg"
+                                    style={{
+                                        background: i <= level
+                                            ? LEVEL_CONFIG[i].color
+                                            : 'rgba(255,255,255,0.1)'
+                                    }}
+                                />
+                            ))}
                         </div>
                     </div>
-                ))}
+
+                    {/* Stat Grid */}
+                    <div className="lm-stat-grid">
+                        <div className="lm-stat-box">
+                            <span className="lm-stat-value">{status?.vehicle_count ?? '--'}</span>
+                            <span className="lm-stat-label">Véhicules détectés</span>
+                        </div>
+                        <div className="lm-stat-box">
+                            <span className="lm-stat-value">{status?.avg_speed ?? '--'}</span>
+                            <span className="lm-stat-label">Vitesse moy. (px/s)</span>
+                        </div>
+                        <div className="lm-stat-box">
+                            <span className="lm-stat-value"
+                                  style={{ color: (status?.slow_ratio ?? 0) > 50 ? '#ff6d00' : '#00c853' }}>
+                                {status?.slow_ratio ?? '--'}%
+                            </span>
+                            <span className="lm-stat-label">Véhicules lents</span>
+                        </div>
+                        <div className="lm-stat-box">
+                            <span className="lm-stat-value">
+                                {status ? status.vehicle_count_down + status.vehicle_count_up : '--'}
+                            </span>
+                            <span className="lm-stat-label">Total comptés</span>
+                        </div>
+                    </div>
+
+                    {/* Direction counters */}
+                    <div className="lm-card lm-direction-card">
+                        <p className="lm-card-label">Flux directionnel</p>
+                        <div className="lm-direction-row">
+                            <div className="lm-dir-box down">
+                                <span className="lm-dir-arrow">▼</span>
+                                <span className="lm-dir-count">{status?.vehicle_count_down ?? 0}</span>
+                                <span className="lm-dir-label">Descend</span>
+                            </div>
+                            <div className="lm-dir-divider" />
+                            <div className="lm-dir-box up">
+                                <span className="lm-dir-arrow">▲</span>
+                                <span className="lm-dir-count">{status?.vehicle_count_up ?? 0}</span>
+                                <span className="lm-dir-label">Monte</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Backend status */}
+                    <div className="lm-card lm-status-card">
+                        <p className="lm-card-label">État du backend</p>
+                        <div className="lm-status-row">
+                            <span>Détection IA</span>
+                            <span className={status?.running ? 'lm-dot-green' : 'lm-dot-red'}>
+                                {status?.running ? '● Actif' : '○ Arrêté'}
+                            </span>
+                        </div>
+                        <div className="lm-status-row">
+                            <span>Alerte congestion</span>
+                            <span className={status?.alert_active ? 'lm-dot-red' : 'lm-dot-green'}>
+                                {status?.alert_active ? '● Active' : '● Normale'}
+                            </span>
+                        </div>
+                        <div className="lm-status-row">
+                            <span>Dernière mise à jour</span>
+                            <span className="lm-dot-grey">
+                                {status?.last_update
+                                    ? new Date(status.last_update * 1000).toLocaleTimeString()
+                                    : '--'}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

@@ -1,7 +1,8 @@
+/* ── LiveMonitoring Layout ── */
 .adm-live-monitoring {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     height: 100%;
 }
 
@@ -12,101 +13,279 @@
 }
 
 .adm-live-info h2 {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e8edf2;
+    margin: 0 0 4px;
 }
 
 .adm-live-info p {
-    font-size: 0.85rem;
-    color: #546E7A;
+    font-size: 0.8rem;
+    color: #8899aa;
+    margin: 0;
 }
 
 .adm-live-controls {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
-.adm-live-grid {
-    flex: 1;
+/* Connection badge */
+.lm-conn-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+}
+.lm-conn-badge.ok  { background: rgba(0,200,83,0.15); color: #00c853; border: 1px solid #00c853; }
+.lm-conn-badge.err { background: rgba(213,0,0,0.15);  color: #ff5252; border: 1px solid #ff5252; }
+
+.lm-fps-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffeb3b;
+    background: rgba(255,235,59,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,235,59,0.3);
+}
+
+/* ── Alert Banner ── */
+.lm-alert-banner {
+    background: rgba(213, 0, 0, 0.2);
+    border: 1.5px solid #d50000;
+    border-radius: 8px;
+    padding: 12px 20px;
+    color: #ff5252;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+.lm-alert-banner.flash {
+    background: rgba(213, 0, 0, 0.45);
+    color: #fff;
+}
+
+/* ── Main Grid ── */
+.lm-main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 320px;
     gap: 16px;
+    flex: 1;
     min-height: 0;
 }
 
-.adm-cam-cell {
-    background: #000;
+/* ── Stream ── */
+.lm-stream-wrap {
+    background: #0a1628;
     border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.07);
     overflow: hidden;
-    position: relative;
-    border: 2px solid transparent;
-    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
-.adm-cam-cell.incident {
-    border-color: var(--color-accident);
-    animation: blink-border 1s infinite;
+.lm-stream-header {
+    padding: 10px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #8899aa;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-@keyframes blink-border {
-
-    0%,
-    100% {
-        border-color: var(--color-accident);
-        box-shadow: 0 0 10px var(--color-accident);
-    }
-
-    50% {
-        border-color: rgba(229, 57, 53, 0.3);
-        box-shadow: none;
-    }
-}
-
-.adm-cam-canvas {
+.lm-stream-img {
     width: 100%;
-    height: 100%;
+    flex: 1;
     object-fit: cover;
+    display: block;
 }
 
-.adm-cam-overlay {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
+.lm-stream-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #445566;
+    padding: 40px;
+}
+
+.lm-stream-placeholder p { font-size: 0.9rem; margin: 0; }
+.lm-stream-placeholder code {
+    background: rgba(255,255,255,0.05);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #00c853;
+}
+
+/* ── Stats Panel ── */
+.lm-stats-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+/* ── Cards ── */
+.lm-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.lm-card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #556677;
+    margin: 0 0 10px;
+}
+
+/* Congestion card */
+.lm-congestion-card {
+    border-width: 1.5px;
+}
+
+.lm-congestion-label {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em;
+}
+
+.lm-level-bar {
+    display: flex;
+    gap: 5px;
+}
+
+.lm-level-seg {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    transition: background 0.4s;
+}
+
+/* Stat grid */
+.lm-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.lm-stat-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lm-stat-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #e8edf2;
+    line-height: 1;
+}
+
+.lm-stat-label {
+    font-size: 0.65rem;
+    color: #667788;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Direction card */
+.lm-direction-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lm-dir-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.lm-dir-box.down { background: rgba(0,69,255,0.1); }
+.lm-dir-box.up   { background: rgba(0,200,83,0.1); }
+
+.lm-dir-arrow {
+    font-size: 1rem;
+}
+.lm-dir-box.down .lm-dir-arrow { color: #4488ff; }
+.lm-dir-box.up   .lm-dir-arrow { color: #00c853; }
+
+.lm-dir-count {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #e8edf2;
+}
+
+.lm-dir-label {
+    font-size: 0.65rem;
+    color: #667788;
+    text-transform: uppercase;
+}
+
+.lm-dir-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.08);
+}
+
+/* Status card */
+.lm-status-row {
     display: flex;
     justify-content: space-between;
-    pointer-events: none;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.78rem;
+    color: #8899aa;
 }
 
-.adm-cam-tag {
-    background: rgba(15, 28, 46, 0.8);
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    padding: 4px 8px;
-    border-radius: 4px;
+.lm-status-row:last-child { border-bottom: none; }
+
+.lm-dot-green { color: #00c853; font-weight: 700; }
+.lm-dot-red   { color: #ff5252; font-weight: 700; }
+.lm-dot-grey  { color: #667788; }
+
+/* Live dot */
+.adm-live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #f44336;
+    border-radius: 50%;
+    animation: pulse 1.2s infinite;
 }
 
-.adm-cam-loc {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.65rem;
-    font-weight: 600;
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.8); }
 }
 
-.adm-btn-secondary {
-    background: #fff;
-    border: 1px solid #CFD8DC;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.adm-btn-secondary:hover {
-    background: #F5F7FA;
-    border-color: #B0BEC5;
+/* Responsive */
+@media (max-width: 1100px) {
+    .lm-main-grid {
+        grid-template-columns: 1fr;
+    }
 }
