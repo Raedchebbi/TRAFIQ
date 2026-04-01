@@ -1,0 +1,120 @@
+[
+    {
+        "prediction_id": "20260303_000412",
+        "frame": 1,
+        "timestamp": "2026-03-03 00:04:12",
+        "risk_score": 80,
+        "risk_level": "CRITICAL",
+        "factors": [
+            "HIGH_DENSITY (6 vehicles)",
+            "TOO_CLOSE: 1<->6 (dist=76px)",
+            "TOO_CLOSE: 2<->4 (dist=47px)",
+            "TOO_CLOSE: 3<->4 (dist=41px)"
+        ],
+        "snapshot": "pred_snapshot_20260303_000412.jpg"
+    },
+    {
+        "prediction_id": "20260303_000424",
+        "frame": 151,
+        "timestamp": "2026-03-03 00:04:24",
+        "risk_score": 90,
+        "risk_level": "CRITICAL",
+        "factors": [
+            "HARD_BRAKING vehicle 19 (decel=19.8)",
+            "SUDDEN_STOP vehicle 19",
+            "TOO_CLOSE: 19<->25 (dist=12px)",
+            "LOW_TTC: 19<->25 (ttc=4.0 frames)"
+        ],
+        "snapshot": "pred_snapshot_20260303_000424.jpg"
+    },
+    {
+        "prediction_id": "20260303_000445",
+        "frame": 405,
+        "timestamp": "2026-03-03 00:04:45",
+        "risk_score": 70,
+        "risk_level": "HIGH",
+        "factors": [
+            "MEDIUM_DENSITY (3 vehicles)",
+            "LOW_TTC: 19<->29 (ttc=11.1 frames)",
+            "LOW_TTC: 29<->32 (ttc=21.1 frames)"
+        ],
+        "snapshot": "pred_snapshot_20260303_000445.jpg"
+    },
+    {
+        "prediction_id": "20260303_005446",
+        "frame": 6,
+        "timestamp": "2026-03-03 00:54:46",
+        "risk_score": 70,
+        "risk_level": "HIGH",
+        "kmeans_clusters": [
+            {
+                "vehicle_id": 1,
+                "cluster": 0,
+                "risk_score": 35
+            },
+            {
+                "vehicle_id": 2,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 3,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 4,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 5,
+                "cluster": 2,
+                "risk_score": 45
+            },
+            {
+                "vehicle_id": 6,
+                "cluster": 0,
+                "risk_score": 35
+            }
+        ],
+        "snapshot": "pred_snapshot_20260303_005446.jpg",
+        "model": "KMeans-clustering + YOLO"
+    },
+    {
+        "prediction_id": "20260303_005514",
+        "frame": 480,
+        "timestamp": "2026-03-03 00:55:14",
+        "risk_score": 70,
+        "risk_level": "HIGH",
+        "kmeans_clusters": [
+            {
+                "vehicle_id": 38,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 41,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 42,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 43,
+                "cluster": 0,
+                "risk_score": 70
+            },
+            {
+                "vehicle_id": 37,
+                "cluster": 2,
+                "risk_score": 10
+            }
+        ],
+        "snapshot": "pred_snapshot_20260303_005514.jpg",
+        "model": "KMeans-clustering + YOLO"
+    }
+]
